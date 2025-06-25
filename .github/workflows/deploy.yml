@@ -45,6 +45,7 @@ jobs:
           rsync -avz --delete \
             --exclude='.git*' \
             --exclude='venv/' \
+            --exclude='.env' \
             ./ ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:${{ secrets.REMOTE_APP_PATH }}
 
       # 8) EC2에서 가상환경 재설치·마이그레이션·정적파일 수집·서비스 재시작
