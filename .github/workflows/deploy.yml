@@ -52,7 +52,7 @@ jobs:
       # 8) EC2에서 가상환경 재설치·마이그레이션·정적파일 수집·서비스 재시작
       - name: Deploy on EC2
         run: |
-          ssh ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} << 'EOF'
+          ssh -tt ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} << 'EOF'
             set -e
             cd ${{ secrets.REMOTE_APP_PATH }}
 
