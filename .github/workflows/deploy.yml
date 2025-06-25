@@ -72,7 +72,7 @@ jobs:
 
             # (4) Gunicorn / Nginx 재시작
             pkill -f 'gunicorn' || true
-            gunicorn --bind 0.0.0.0:8000 {project_name}.wsgi:application --daemon
+            gunicorn --bind 0.0.0.0:8000 ${{ secrets.PROJECT_NAME }}.wsgi:application --daemon
             sudo systemctl restart nginx
 
             exit
