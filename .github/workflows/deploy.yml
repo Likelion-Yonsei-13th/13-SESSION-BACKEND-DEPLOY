@@ -80,7 +80,12 @@ jobs:
             echo "▶ Nginx 설정 문법 테스트…"
             sudo nginx -t
             echo "▶ Nginx 재시작…"
-            sudo systemctl restart nginx
+            sudo systemctl restart nginx || {
+              echo "‼️ nginx restart 실패 (exit code $?)"
+              echo "▶ 최근 nginx 로그 출력…"
+              journalctl -u nginx --no-pager -n 50
+              exit 1
+            }
 
             exit
           EOF
