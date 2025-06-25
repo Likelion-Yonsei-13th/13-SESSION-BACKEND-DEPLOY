@@ -76,6 +76,9 @@ jobs:
             pkill -f 'gunicorn' || true
             gunicorn --bind 0.0.0.0:8000 ${{ secrets.PROJECT_NAME }}.wsgi:application --daemon
             
+            
+            echo "▶ Nginx 설정 문법 테스트…"
+            sudo nginx -t
             echo "▶ Nginx 재시작…"
             sudo systemctl restart nginx
 
