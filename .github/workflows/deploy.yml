@@ -69,6 +69,7 @@ jobs:
             pip install -r requirements.txt
 
             # (3) 마이그레이션
+            cd ${{ secrets.PROJECT_NAME }}
             python manage.py makemigrations
             python manage.py migrate --noinput
 
