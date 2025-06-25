@@ -72,8 +72,11 @@ jobs:
             python manage.py migrate --noinput
 
             # (4) Gunicorn / Nginx 재시작
+            echo "▶ Gunicorn 재시작…"
             pkill -f 'gunicorn' || true
             gunicorn --bind 0.0.0.0:8000 ${{ secrets.PROJECT_NAME }}.wsgi:application --daemon
+            
+            echo "▶ Nginx 재시작…"
             sudo systemctl restart nginx
 
             exit
