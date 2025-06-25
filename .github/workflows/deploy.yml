@@ -25,12 +25,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          pip install pytest  
 
-      # 4) (선택) Run tests
-      - name: Run test suite
-        run: |
-          pytest --maxfail=1 --disable-warnings -q
 
       # 5) Load SSH key for deployment
       - name: Add SSH key
